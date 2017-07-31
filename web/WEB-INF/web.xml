@@ -29,13 +29,29 @@
         127.0.0.1:8080/simpleapp/hello
     -->
 
+    <!--
+        <load-on-startup>1</load-on-startup>
+        Определяет, что данный сервлет будет загружаться первым
+    -->
+
     <servlet>
-        <servlet-name>Tomcat Simple Servlet</servlet-name>
-        <servlet-class>com.tomcat.TomcatSimpleServlet</servlet-class>
+        <servlet-name>Default</servlet-name>
+        <servlet-class>com.tomcat.servlet.impl.DefaultServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Default</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Tomcat Simple Servlet Registration</servlet-name>
+        <servlet-class>com.tomcat.TomcatSimpleRegistrationServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>Tomcat Simple Servlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>Tomcat Simple Servlet Registration</servlet-name>
+        <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 </web-app>
