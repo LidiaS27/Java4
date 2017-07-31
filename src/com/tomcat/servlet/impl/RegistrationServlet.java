@@ -29,20 +29,25 @@ public class RegistrationServlet extends AbstractServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LOGGER.log(Level.INFO, "HTTP/1.1 Method Post path: /registration");
 
+        res.setContentType("text/html");
+        res.setCharacterEncoding("UTF-8");
+
         User newUser = new User();
         if (isFilledUser(req)) {
             newUser.setName(req.getParameter("username"));
             newUser.setPassword(req.getParameter("password"));
 
             req.getRequestDispatcher(TEMPLATE_PATH + "successful.html").forward(req, res);
+        } else {
+            req.getRequestDispatcher(TEMPLATE_PATH + "fault.html").forward(req, res);
         }
-
-        //request.getRequestDispatcher(TEMPLATE_PATH + "fault.html").forward(request, response);
-
     }
 
     private boolean isFilledUser(HttpServletRequest req) {
-        if (req.getParameter("username") != null && req.getParameter("password") != null) {
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        if ( (username != null && !"".equals(username)) && (password != null && !"".equals(password)) ) {
             return true;
         }
         return false;
