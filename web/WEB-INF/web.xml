@@ -46,12 +46,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Tomcat Simple Servlet Registration</servlet-name>
-        <servlet-class>com.tomcat.TomcatSimpleRegistrationServlet</servlet-class>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>com.tomcat.servlet.impl.RegistrationServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>Tomcat Simple Servlet Registration</servlet-name>
+        <servlet-name>Registration</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 </web-app>
